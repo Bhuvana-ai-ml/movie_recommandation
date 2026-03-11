@@ -104,7 +104,7 @@ streamlit run app.py
 
 ## 👨‍💻 Author
 
-**Keerthan D**
+**BHUVANA P**
 B.Tech CSE (AI & ML)
 
 Machine Learning Project – Movie Recommendation Clustering System
