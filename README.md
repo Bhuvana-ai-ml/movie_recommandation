@@ -1,1 +1,80 @@
-# movie_recommandation
+# 🎬 Movie Recommendation Clustering System
+
+This project builds a **movie recommendation system using unsupervised machine learning**. Movies are grouped into clusters based on genre, ratings, and popularity.
+
+The clustering approach helps identify similar movies so that recommendations can be generated for users.
+
+---
+
+## 📊 Dataset
+
+Dataset used: The Movies Dataset from Kaggle
+
+Main features used:
+
+- Title
+- Genres
+- Vote Average (rating)
+- Popularity
+
+---
+
+## ⚙️ Technologies Used
+
+- Python
+- Pandas
+- NumPy
+- Scikit-learn
+- Streamlit
+- Matplotlib
+
+---
+
+## 🧠 Machine Learning Techniques
+
+The project applies **unsupervised learning** algorithms.
+
+### 1. KMeans Clustering
+Groups movies into clusters based on similarity.
+
+### 2. Hierarchical Clustering
+Alternative clustering technique using a tree structure.
+
+### 3. Feature Engineering
+Genres are converted into numerical form using MultiLabelBinarizer.
+
+### 4. Feature Scaling
+StandardScaler is used to normalize the dataset.
+
+### 5. Dimensionality Reduction
+PCA and t-SNE are used for cluster visualization.
+
+---
+
+## 📈 Workflow
+
+Dataset → Data Cleaning → Genre Encoding → Feature Scaling → Clustering → Visualization
+
+---
+
+## 🚀 Streamlit Application
+
+The Streamlit app allows users to:
+
+- Select a movie
+- Identify its cluster
+- Get recommendations of similar movies
+
+---
+
+## ▶️ How to Run Locally
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+
+
+👨‍💻 Author
+
+BHUVANA_P
+B.Tech CSE (AI & ML)
