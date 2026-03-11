@@ -13,22 +13,21 @@ st.set_page_config(page_title="Movie Recommendation System", layout="wide")
 
 st.title("🎬 Movie Recommendation Clustering System")
 
-st.write("This application recommends movies based on clustering using genre, rating, and popularity.")
+st.write(
+"""
+This application groups movies into clusters based on
+**genres, rating, and popularity**, then recommends similar movies.
+"""
+)
 
 # ---------------------------------------------------
-# LOAD DATASET (CACHED)
+# LOAD DATA
 # ---------------------------------------------------
 
 @st.cache_data
 def load_data():
 
-    url = "https://raw.githubusercontent.com/selva86/datasets/master/movies_metadata.csv"
-
-    df = pd.read_csv(
-        url,
-        engine="python",
-        on_bad_lines="skip"
-    )
+    df = pd.read_csv("movies_small.csv")
 
     df = df[['title','genres','vote_average','popularity']]
 
@@ -58,13 +57,18 @@ def preprocess(df):
     df['genres'] = df['genres'].apply(extract_genres)
 
     mlb = MultiLabelBinarizer()
+
     genre_encoded = mlb.fit_transform(df['genres'])
 
     genre_df = pd.DataFrame(genre_encoded, columns=mlb.classes_)
 
-    features = pd.concat([genre_df, df[['vote_average','popularity']]], axis=1)
+    features = pd.concat(
+        [genre_df, df[['vote_average','popularity']]],
+        axis=1
+    )
 
     scaler = StandardScaler()
+
     X = scaler.fit_transform(features)
 
     return df, X
@@ -91,18 +95,18 @@ model, clusters = train_model(X)
 df['cluster'] = clusters
 
 # ---------------------------------------------------
-# MOVIE SELECTION
+# SIDEBAR MOVIE SELECTION
 # ---------------------------------------------------
 
-st.sidebar.header("🎥 Movie Selection")
+st.sidebar.header("🎥 Select a Movie")
 
 movie = st.sidebar.selectbox(
-    "Select a movie",
+    "Choose a movie",
     sorted(df['title'].unique())
 )
 
 # ---------------------------------------------------
-# RECOMMENDATION
+# MOVIE RECOMMENDATION
 # ---------------------------------------------------
 
 if st.sidebar.button("Recommend Movies"):
