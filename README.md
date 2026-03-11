@@ -73,8 +73,3 @@ The Streamlit app allows users to:
 pip install -r requirements.txt
 streamlit run app.py
 
-
-👨‍💻 Author
-
-BHUVANA_P
-B.Tech CSE (AI & ML)
